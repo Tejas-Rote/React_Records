@@ -6,9 +6,47 @@
 
 .app {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  
+  width: 100%;
+  background: -moz-radial-gradient(
+    circle at 50% 50%,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(235, 87, 87, 1) 0%,
+    rgba(32, 58, 67, 1) 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-radial-gradient(
+    circle at 50% 50%,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(235, 87, 87, 1) 0%,
+    rgba(32, 58, 67, 1) 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-radial-gradient(
+    circle at 50% 50%,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(235, 87, 87, 1) 0%,
+    rgba(32, 58, 67, 1) 100%
+  );
+
+  /* ie 10+ */
+  background: -ms-radial-gradient(
+    circle at 50% 50%,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(235, 87, 87, 1) 0%,
+    rgba(32, 58, 67, 1) 100%
+  );
+
+  /* global 92%+ browsers support */
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(235, 87, 87, 1) 0%,
+    rgba(32, 58, 67, 1) 100%
+  );
 }

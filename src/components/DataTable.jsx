@@ -110,8 +110,7 @@ export default function DataTable() {
   }));
 
   return (
-    <Paper sx={{ width: "70%", overflow: "hidden" }}>
-        <h1>Table data fetched using AXIOS</h1>
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 500 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
