@@ -16,20 +16,14 @@ import { tableCellClasses } from "@mui/material/TableCell";
 const columns = [
   {
     id: "firstName",
-    label: "Name",
+    label: "FirstName",
     minWidth: 100,
     align: "left",
   },
   {
-    id: "email",
-    label: "Email",
-    minWidth: 170,
-    align: "left",
-  },
-  {
-    id: "phone",
-    label: "Phone",
-    minWidth: 170,
+    id: "lastName",
+    label: "LastName",
+    minWidth: 100,
     align: "left",
   },
   {
@@ -39,15 +33,69 @@ const columns = [
     align: "left",
   },
   {
-    id: "username",
-    label: "Username",
-    minWidth: 170,
+    id: "gender",
+    label: "Gender",
+    minWidth: 50,
     align: "left",
   },
   {
-    id: "password",
-    label: "Password",
+    id: "email",
+    label: "Email",
+    minWidth: 120,
+    align: "left",
+  },
+  {
+    id: "phone",
+    label: "Phone",
     minWidth: 170,
+    align: "left",
+  },
+
+  {
+    id: "username",
+    label: "Username",
+    minWidth: 120,
+    align: "left",
+  },
+
+  {
+    id: "birthDate",
+    label: "DOB",
+    minWidth: 120,
+    align: "left",
+  },
+  {
+    id: "height",
+    label: "Height",
+    minWidth: 90,
+    align: "left",
+  },
+
+  {
+    id: "weight",
+    label: "Weight",
+    minWidth: 90,
+    align: "left",
+  },
+
+  {
+    id: "address",
+    label: "Address",
+    minWidth: 120,
+    align: "left",
+  },
+
+  {
+    id: "bank",
+    label: "Bank",
+    minWidth: 120,
+    align: "left",
+  },
+
+  {
+    id: "company",
+    label: "Company Name",
+    minWidth: 120,
     align: "left",
   },
 ];
@@ -73,7 +121,7 @@ export default function DataTable() {
         const response = await axios.get("https://dummyjson.com/users");
         const usersArray = Object.values(response.data);
         setUsers(usersArray[0]);
-        // console.log(usersArray[0]);
+        console.log(usersArray[0]);
       } catch (error) {
         console.error("Error fetching users:", error);
       }
@@ -111,7 +159,7 @@ export default function DataTable() {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 500 }}>
+      <TableContainer sx={{ maxHeight: 500, maxWidth:1700 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -138,13 +186,24 @@ export default function DataTable() {
                     key={row.firstName}
                   >
                     {columns.map((column) => {
-                      const value = row[column.id];
-                      // console.log(column.id);
+                      const col = column.id;
+                      var x = "";
+                      const addressString = `Address: ${row.address.address} City: ${row.address.city},  State: ${row.address.state}, ${row.address.postalCode}, Latitude: ${row.address.coordinates.lat}, Longitude: ${row.address.coordinates.lng}`;
+
+                      {
+                        col === "address"
+                          ? (x = addressString)
+                          : col === "bank"
+                          ? (x = row.bank.cardExpire)
+                          : col === "company"
+                          ? (x = row.company.name)
+                          : (x = row[col]);
+                      }
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                            ? column.format(x)
+                            : x}
                         </TableCell>
                       );
                     })}
